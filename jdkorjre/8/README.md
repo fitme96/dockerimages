@@ -9,3 +9,7 @@
 
 
 ## 如果是jre，Dockerfile中应该是JRE_HOME,否则JAVA_HOME。
+
+
+## alpine制作jre镜像安装glibc
+- https://github.com/sgerrand/alpine-pkg-glibc
