@@ -1,0 +1,14 @@
+FROM alpine:latest
+ARG PKG
+ENV JRE_HOME=/usr/local/jdk
+ENV CLASSPATH=$JRE_HOME/bin
+ENV PATH=$PATH:$JRE_HOME/bin
+
+ADD ./jre-8u221-linux-x64.tar.gz /usr/local/
+
+RUN apk --no-cache add ca-certificates  && \
+	wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
+	wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.23-r3/glibc-2.23-r3.apk && \
+	apk add glibc-2.23-r3.apk && \
+	ln -sv /usr/local/jre1.8.0_221  /usr/local/jdk
+CMD ["java","-version"]
