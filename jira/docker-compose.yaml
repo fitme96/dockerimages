@@ -1,0 +1,15 @@
+version: '2'
+services:
+  confluence:
+    image: 'haxqer/jira:rm'
+    restart: always
+    container_name: jira
+    hostname: 'jira'
+    user: root
+    ports:
+      - '8082:8080'
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - '/mnt/md0/jira-home:/var/jira'
+
